@@ -1,9 +1,15 @@
 <?php
+// online
+$db['db_host'] = "us-cdbr-iron-east-01.cleardb.net";
+$db['db_user'] = "b24a3bade5ae0c";
+$db['db_pass'] = "baeb3bdf";
+$db['db_name'] = "heroku_545ac9ca6d8db43";
 
-$db['db_host'] = "localhost";
-$db['db_user'] = "root";
-$db['db_pass'] = "root";
-$db['db_name'] = "planqua";
+// dev
+//$db['db_host'] = "localhost";
+//$db['db_user'] = "root";
+//$db['db_pass'] = "root";
+//$db['db_name'] = "planqua";
 
 
 foreach($db as $key => $value){
