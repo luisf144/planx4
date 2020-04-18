@@ -1,0 +1,179 @@
+body {
+    padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+}
+
+footer {
+    margin: 50px 0;
+}
+
+.navbar-inverse {
+background-color: lightseagreen;
+border-color: transparent;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+  color: white;
+}
+
+.descr-post{
+ white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;   
+  color: #4e6261;
+  padding: 15px;
+}
+
+.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form{
+    border-color: white;
+}
+
+.page-header{
+    padding-bottom: 9px;
+    margin: 10px 0 20px;
+    border-bottom: 1px solid #eee;
+    color: darkslategray;
+}
+
+.btn-info{
+    background-color: #76bbd3;
+    border-color: #76bbd3;
+}
+
+a{
+    color: #4d7e7c;
+}
+
+a:hover{
+    color: #339d99;
+    text-decoration: none;
+}
+
+.date-post{
+    color: darkslategray;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.center-img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+.descr-post-u {
+    text-overflow: ellipsis;
+    color: #4e6261;
+    padding: 15px;
+}
+
+
+.lead {
+    margin-bottom: 10px; 
+    font-weight: 300;
+    line-height: 1.4;
+}
+
+.comment-post{
+    line-height: initial;
+    display: block;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    margin-top: 9px;
+    
+    text-decoration: underline;
+    color: darkgray;
+    float: right;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.comment-content{
+    padding-right: 30px;
+    padding-left: 5px;
+    margin-bottom: 10px;
+}
+
+.page-selected{
+    color: white !important;
+    background-color: lightseagreen !important;
+}
+
+.btn{
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border-radius: 4px;
+}
+
+.btn-app{
+    color: white;
+    float:right;
+    margin-top: 35px;
+    background-color:lightseagreen;
+    border-color:lightseagreen;
+}
+
+.btn-app:hover{
+    color: white;
+}
+
+.post-label{
+    font-size:100%;
+}
+
+.no-posts{
+ margin-top: 100px;   
+}
+
+.no-comment{
+    color:gray;
+}
+
+.i-delete{
+    float:right;
+    color:#e50601;
+    font-size:20px;
+}
+
+.post-time{
+    float:left;
+}
+
+.user-link{
+    font-weight: bold;
+}
+
+.comment-label{
+    color: darkslategray;
+}
+
+.posts-img{
+    width: 350px;
+}
+
+.post-img{
+    width: 500px;
+}
+
+.logo-nav{
+    margin-top:-9px;
+    margin-top: -15px;
+    width: 82px;
+}
