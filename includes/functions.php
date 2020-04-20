@@ -12,60 +12,42 @@ function escape($string){
     return mysqli_real_escape_string($connection, trim($string));
 }
 
-function get_users_online(){
-    global $connection;
-    $time = time();
-    $time_out_in_seconds = 05;
-    $time_out =  $time - $time_out_in_seconds;
-
-    $users_online_query = mysqli_query($connection, "SELECT * FROM users_online WHERE time > '$time_out' ");
-
-    $users_online = [];
-    while($row = mysqli_fetch_assoc($users_online_query)){
-        $users_online[] = $row['user_id'];
-    }
-   
-    return $users_online;
-}
-
 function users_online(){
     global $connection;
 
-    if(isset($_GET['onlineusers'])){
-        if(!$connection){
-            session_start();
-            $session = session_id();
-            $time = time();
-            $time_out_in_seconds = 05;
-            $time_out =  $time - $time_out_in_seconds;
-            
-            include "db.php";
+    if(isset($_GET['onlineusers'])) {
+        if (!$connection) {
+            include "../includes/db.php";
         }
-        
+
+        $time = time();
+        $time_out_in_seconds = 120;
+        $time_out = $time - $time_out_in_seconds;
+        session_start();
+        $session = session_id();
+
         $user_id = 0;
-        if(isset($_SESSION['user_id']))
-            $user_id = $_SESSION['user_id'];
-        
-        $query = "SELECT * FROM users_online WHERE session = '$session' AND user_id = $user_id";
+        if (isset($_SESSION['user_id']))
+            $user_id = escape($_SESSION['user_id']);
+
+        $query = "SELECT * FROM users_online WHERE session = '$session' ";
         $exec_query = mysqli_query($connection, $query);
         $count = mysqli_num_rows($exec_query);
 
-        if(!$count){
+        if (!$count) {
             $result = mysqli_query($connection, "INSERT INTO users_online(user_id, session, time) VALUES($user_id, '$session', '$time')");
             confirm_query($result);
-        }else{
-            $result = mysqli_query($connection, "UPDATE users_online SET time='$time' WHERE session='$session' AND user_id = $user_id");
+        } else {
+            $result = mysqli_query($connection, "UPDATE users_online SET time='$time', user_id=$user_id WHERE session='$session'");
             confirm_query($result);
         }
 
         $users_online_query = mysqli_query($connection, "SELECT * FROM users_online WHERE time > '$time_out' ");
 
         echo mysqli_num_rows($users_online_query);
-        
+
     }
-    
-    
-    
+
 }
 
 /** CALLING FUNCTION **/
@@ -76,7 +58,7 @@ function checkUsernameExistDB($username){
     global $connection;
     pdo_connect_mysql();
     $pdo = pdo_connect_mysql();
-    
+
     $stmt = $pdo->prepare("SELECT COUNT(*) FROM users WHERE username = :username");
     $stmt->bindValue(":username", $username, PDO::PARAM_STR);
     $stmt->execute();
@@ -84,7 +66,7 @@ function checkUsernameExistDB($username){
     return $stmt->fetchColumn();
 }
 
-function get_time_ago($time){ 
+function get_time_ago($time){
     $time_difference = time() - $time;
 
     if( $time_difference < 1 ) { return 'less than 1 second ago'; }
@@ -110,7 +92,7 @@ function get_time_ago($time){
 
 function get_greetings(){
     $now = date('H');
-    
+
     if($now < 12){
         return "Good Morning";
     }elseif($now > 11 && $now < 17){
@@ -120,6 +102,6 @@ function get_greetings(){
     }else{
         return "Welcome";
     }
-    
+
 
 }

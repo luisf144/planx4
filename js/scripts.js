@@ -10,7 +10,7 @@ $(document).ready(function(){
     
     setInterval(function(){
         loadUsersOnline();
-    }, 1000);
+    }, 10000);
 
 });
 
