@@ -2,6 +2,7 @@
    <?php
     pdo_connect_mysql();
     $pdo = pdo_connect_mysql();
+    $error = "";
 
     if(isset($_POST['sign_up'])){
         if(isset($_POST['username']) && isset($_POST['password']) 
@@ -16,7 +17,7 @@
                 $password = password_hash($password, PASSWORD_BCRYPT, ['cost'=>12] );
 
                 if(checkUsernameExistDB($username)){
-                $_SESSION['errorRegistration'] = 'The Username already exists.';
+                $error = 'The Username already exists.';
 
                 }else{
                     $sql = "INSERT INTO users(username, user_firstname, user_lastname, user_role, password) ";
@@ -45,7 +46,7 @@
 
                 }
             }else{
-                $_SESSION['errorRegistration'] = 'The fields cannot be empty.';
+                $error = 'The fields cannot be empty.';
             }   
         }
     }
@@ -61,13 +62,20 @@
                        
                        <div class="form-group">
                             <div class="row">
-                                <div class="col-xs-6"><input type="text" class="form-control" name="user_firstname" placeholder="First Name" required="required"></div>
-                                <div class="col-xs-6"><input type="text" class="form-control" name="user_lastname" placeholder="Last Name" required="required"></div>
+                                <div class="col-xs-6">
+                                    <input type="text" class="form-control" name="user_firstname" placeholder="First Name"
+                                           required="required" autocomplete="on" value="<?php echo isset($user_firstname) ? $user_firstname :'' ?>">
+                                </div>
+                                <div class="col-xs-6">
+                                    <input type="text" class="form-control" name="user_lastname" placeholder="Last Name"
+                                           required="required" autocomplete="on" value="<?php echo isset($user_lastname) ? $user_lastname :'' ?>">
+                                </div>
                             </div>        	
                         </div>
                 
                        <div class="form-group">
-                            <input name="username" placeholder="Username" type="text" class="form-control" required="required">  
+                            <input name="username" placeholder="Username" type="text" class="form-control"
+                                   required="required" autocomplete="on" value="<?php echo isset($username) ? $username :'' ?>">
                         </div>
 
                         <div class="input-group">
@@ -86,15 +94,15 @@
                         
                         
                         
-                           <?php if(isset($_SESSION['errorRegistration'])){  ?>
+                           <?php if($error !== ""){  ?>
                             <br>
                             <div class="alert alert-dismissable alert-danger" >
                               <button type="button" class="close" data-dismiss="alert">×</button>
-                                <?php echo $_SESSION['errorRegistration']; ?>
+                                <?php echo $error; ?>
                             </div>
                                
                           <?php
-                                   unset($_SESSION['errorRegistration']);
+
                                 } 
                           ?>
                         

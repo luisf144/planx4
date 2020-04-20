@@ -8,43 +8,7 @@
     
                 if(!isset($_SESSION['username'])){
                 ?>
-
-                    <br>                
-                    <div class="well" id="login">
-                        <h4>Log In</h4>
-             
-                       <form action="includes/login.php" method="post"> 
-                       <div class="form-group">
-                            <input name="username" placeholder="Enter Username" type="text" class="form-control">  
-                        </div>
-
-                        <div class="input-group">
-                            <input name="password" placeholder="Enter Password" type="password" class="form-control" >  
-                            <span class="input-group-btn">
-                                <button class="btn btn-primary" name="login" type="submit">
-                                    Log In
-                                </button>
-                            </span>
-                        </div>
-
-
-                        </form>
-
-            
-                          <?php if(isset($_SESSION['errorLogin'])){  ?>
-                            <br>
-                            <div class="alert alert-dismissable alert-danger" >
-                              <button type="button" class="close" data-dismiss="alert">×</button>
-                                <?php echo $_SESSION['errorLogin']; ?>
-                            </div>
-                               
-                          <?php
-                                   unset($_SESSION['errorLogin']);
-                                } 
-                          ?>
-                        
-                        
-                    </div>
+                    <?php include "login.php";  ?>
                         
                 <?php }   ?>
                
