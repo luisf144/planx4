@@ -1,0 +1,6 @@
+#RewriteEngine on
+
+#RewriteRule ^(index)$ $1.php [NC,L]  #everything match like registration|contact is adding a .php
+
+#RewriteRule ^post/(\d+)$ post.php?post_id=$1 [NC,L]
+#RewriteRule ^category/(\d+)$ category.php?category_id=$1 [NC,L]

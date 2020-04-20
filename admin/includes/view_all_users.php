@@ -60,7 +60,18 @@
                  echo "<td> $user_image </td>";
 
                  echo "<td> <a href='users.php?source=edit_user&user_id={$user_id}'>Edit</a> </td>";
-                 echo "<td> <a href='users.php?delete={$user_id}'>Delete</a> </td>";
+
+            ?>
+
+                <form action="" method="post">
+                    <input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
+                    <td>
+                        <button type="submit" class="btn btn-link" name="delete_user">Delete</button>
+                    </td>
+                </form>
+
+
+            <?php
                  echo "</tr>";
              }
 
@@ -74,8 +85,8 @@
 
 <?php
 
-if(isset($_GET['delete'])){
-    $user_id = escape($_GET['delete']);
+if(isset($_POST['delete_user'])){
+    $user_id = $_POST['user_id'];
     $query = "DELETE FROM users WHERE user_id = {$user_id}";
     $delete_query = mysqli_query($connection, $query);
       header("Location: users.php");

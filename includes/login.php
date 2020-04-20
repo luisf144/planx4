@@ -26,6 +26,9 @@ if(isset($_POST['login'])){
 
         }
 
+        unset($stmt);
+        unset($pdo);
+
         if(password_verify($password, $db_password)){
             $_SESSION['user_id'] = $user_id;
             $_SESSION['username'] = $username;

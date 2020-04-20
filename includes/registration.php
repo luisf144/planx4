@@ -33,6 +33,7 @@
                     
                     // Check that the insertion really worked. If the last inserted id is greater than zero, the insertion worked.
                     $lastInsertId = $pdo->lastInsertId();
+                    unset($pdo);
                     if($lastInsertId){
                         $_SESSION['username'] = $username;
                         $_SESSION['user_firstname'] = $user_firstname;

@@ -68,26 +68,16 @@ function find_all_categories(){
     $query = "SELECT * FROM categories";
     $select_categories = mysqli_query($connection, $query);
 
-     while($row = mysqli_fetch_assoc($select_categories)){
-        $cat_title = $row['cat_title'];
-        $cat_id = $row['cat_id'];
-
-        echo "<tr>";
-        echo "<td>{$cat_id}</td>";
-        echo "<td>{$cat_title}</td>";
-        echo "<td> <a href='categories.php?edit={$cat_id}'>Edit</a> </td>";
-        echo "<td> <a href='categories.php?delete={$cat_id}'>Delete</a> </td>";
-        echo "</tr>";
-     }
-
+    return $select_categories;
 }
 
 function delete_categories(){
     global $connection;
-    if(isset($_GET['delete'])){
-        $cat_id = escape($_GET['delete']);
+    if(isset($_POST['delete_category'])){
+        $cat_id = $_POST['cat_id'];
         $query = "DELETE FROM categories WHERE cat_id = {$cat_id}";
         $delete_query = mysqli_query($connection, $query);
+        confirm_query($delete_query);
         header("Location: categories.php");
     }    
 }

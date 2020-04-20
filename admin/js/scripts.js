@@ -26,9 +26,14 @@ $(document).ready(function(){
     
     var modalConfirm = function(confirm){
      if(confirm){
-          window.location.href = "posts.php?delete="+modalValue;
+         $.post("posts.php",
+             {
+                 deletePostId: modalValue
+             }, function(){
+                 window.location.href = "posts.php?reload";
+             });
 
-      }        
+      }
 
     };
    

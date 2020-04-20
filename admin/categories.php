@@ -61,10 +61,35 @@
 
                                     <tbody>
 
+                                     <?php
+                                     $result_query = find_all_categories();
+                                     while($row = mysqli_fetch_assoc($result_query)){
+                                         $cat_title = $row['cat_title'];
+                                         $cat_id = $row['cat_id'];
 
-                                     <?php 
-                                        find_all_categories();
-                                        delete_categories(); 
+                                         echo "<tr>";
+                                         echo "<td>{$cat_id}</td>";
+                                         echo "<td>{$cat_title}</td>";
+                                         echo "<td> <a href='categories.php?edit={$cat_id}'>Edit</a> </td>";
+
+                                         ?>
+
+                                         <form action="" method="post">
+                                             <input type="hidden" name="cat_id" value="<?php echo $cat_id; ?>">
+                                             <td>
+                                                 <button type="submit" name="delete_category" class="btn btn-link">
+                                                     Delete
+                                                 </button>
+                                             </td>
+                                         </form>
+
+                                         <?php
+
+                                         echo "</tr>";
+                                     }
+
+
+                                    delete_categories();
                                     ?>
 
 

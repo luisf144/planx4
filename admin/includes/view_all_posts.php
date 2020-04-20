@@ -136,7 +136,16 @@ if(isset($_POST['checkBoxArray'])){
                  echo "<td> <p class='text-center'>$post_views_count</p> <a href='posts.php?reset={$post_id}'> Reset </a></td>";
                  echo "<td> $post_date </td>";
                  echo "<td> <a href='posts.php?source=edit_post&post_id={$post_id}'>Edit</a> </td>";
-                 echo "<td> <button class='btn btn-link btn-confirm' type='button' data-value='{$post_id}'>Delete</button> </td>";
+
+                 ?>
+
+                     <td>
+                         <input type="button" class="btn btn-link btn-confirm"
+                                data-value="<?php echo $post_id; ?>" name="delete" value="Delete">
+                     </td>
+
+                 <?php
+
                  echo "</tr>";
              }
 
@@ -151,8 +160,8 @@ if(isset($_POST['checkBoxArray'])){
 
 <?php
 
-if(isset($_GET['delete'])){
-    $post_id = escape($_GET['delete']);
+if(isset($_POST['deletePostId'])){
+    $post_id = $_POST['deletePostId'];
     $query = "DELETE FROM posts WHERE post_id = {$post_id}";
     $delete_query = mysqli_query($connection, $query);
       header("Location: posts.php");

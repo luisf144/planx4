@@ -52,7 +52,20 @@
 
                  echo "<td> <a href='comments.php?approve={$comment_id}&comment_post_id={$comment_post_id}'>Approve</a> </td>";
                  echo "<td> <a href='comments.php?unapprove={$comment_id}&comment_post_id={$comment_post_id}'>Unapprove</a> </td>";
-                 echo "<td> <a href='comments.php?delete={$comment_id}&comment_post_id={$comment_post_id}'>Delete</a> </td>";
+
+                 ?>
+
+                 <form action="" method="post">
+                     <input type="hidden" name="comment_id" value="<?php echo $comment_id; ?>">
+                     <input type="hidden" name="post_id" value="<?php echo $comment_post_id; ?>">
+                     <td>
+                         <button type="submit" name="remove_comment" class="btn btn-link">
+                             Delete
+                         </button>
+                     </td>
+                 </form>
+
+                 <?php
                  echo "</tr>";
              }
 
@@ -66,9 +79,9 @@
 
 <?php
 
-if(isset($_GET['delete'])){
-    $comment_id = escape($_GET['delete']);
-    $comment_post_id = escape($_GET['comment_post_id']);
+if(isset($_POST['remove_comment'])){
+    $comment_id = $_POST['comment_id'];
+    $comment_post_id = $_POST['post_id'];
     $query = "DELETE FROM comments WHERE comment_id = {$comment_id}";
     $delete_query = mysqli_query($connection, $query);
     

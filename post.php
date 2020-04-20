@@ -9,14 +9,16 @@ $user_lastname = (isset($_SESSION['user_lastname']) ? " ".$_SESSION['user_lastna
 
 
 //LOGIC DELETE COMMENT ->
-if(isset($_GET['rm'])){
-    $post_id = escape($_GET['post_id']);
-    $comment_id = escape($_GET['rm']);
-    $query = "UPDATE comments SET comment_status = 'unapproved' WHERE comment_id = {$comment_id}";
-    $delete_query = mysqli_query($connection, $query);
-    
-    confirm_query($delete_query);
-    header("Location: post.php?post_id=$post_id");
+if(isset($_POST['remove_comment'])){
+    if(!empty($_POST['post_id']) && !empty($_POST['comment_id'])){
+        $post_id = $_POST['post_id'];
+        $comment_id = $_POST['comment_id'];
+        $query = "UPDATE comments SET comment_status = 'unapproved' WHERE comment_id = {$comment_id}";
+        $delete_query = mysqli_query($connection, $query);
+
+        confirm_query($delete_query);
+        header("Location: post.php?post_id=$post_id");
+    }
 }
 
 ?>
@@ -253,11 +255,15 @@ if(isset($_GET['rm'])){
                                         $username = $_SESSION['username'];
                                       if(($comment_created_by == $username) || (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 'admin')){
 
-                                    ?>  
-                                     
-                                       <a href="post.php?post_id=<?php echo $post_id; ?>&rm=<?php echo $comment_id; ?>">
-                                          <i class="i-delete" class="fa fa-trash" aria-hidden="true"></i>
-                                       </a>
+                                    ?>
+
+                                          <form action="" method="post">
+                                              <input type="hidden" name="post_id" value="<?php echo $post_id; ?>">
+                                              <input type="hidden" name="comment_id" value="<?php echo $comment_id; ?>">
+                                              <button type="submit" class="i-delete" name="remove_comment" >
+                                                  <i class="fa fa-trash" aria-hidden="true"></i>
+                                              </button>
+                                          </form>
                                     
                                     <?php
                                       }
