@@ -55,12 +55,12 @@
                     $page_1 = ($page * 5) - 5;
                 
                 
-                $query = "SELECT * FROM posts WHERE post_category_id = $post_category_id";
+                $query = "SELECT * FROM posts WHERE post_category_id = $post_category_id AND post_status = 'published' ";
                 $select_all_post_query = mysqli_query($connection, $query);
                 $all_posts_count = mysqli_num_rows($select_all_post_query);
                 $all_posts_count = ceil($all_posts_count / 5);
                 
-                $query = "SELECT * FROM posts WHERE post_category_id = $post_category_id ORDER BY post_id DESC LIMIT $page_1, 5";
+                $query = "SELECT * FROM posts WHERE post_category_id = $post_category_id AND post_status = 'published' ORDER BY post_id DESC LIMIT $page_1, 5";
                 $select_all_post_query = mysqli_query($connection, $query);
                 
                 $rows = mysqli_num_rows($select_all_post_query);

@@ -12,6 +12,22 @@ function escape($string){
     return mysqli_real_escape_string($connection, trim($string));
 }
 
+function page_is_active($current_link){
+    $class_page = basename($_SERVER['PHP_SELF']);
+
+    return ( ($current_link == $class_page) ? "active" : "" );
+}
+
+function record_count($table, $condition = ""){
+    global $connection;
+    $condition_sql = (($condition != "") ? " WHERE ".$condition :"");
+    $sql = "SELECT * FROM ". $table . $condition_sql;
+    $query = mysqli_query($connection, $sql);
+    $count = mysqli_num_rows($query);
+
+    return $count;
+}
+
 function get_users_online(){
     global $connection;
     $time = time();

@@ -12,6 +12,12 @@ function escape($string){
     return mysqli_real_escape_string($connection, trim($string));
 }
 
+function send_mail(){
+    mail('luisfcb14@gmail.com', "THIS IS A TEST", "<h1> Ciao</h1>", "edwin@gmail.com");
+}
+
+//send_mail();
+
 function users_online(){
     global $connection;
 

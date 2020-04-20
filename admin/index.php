@@ -17,47 +17,19 @@
                 </div>
                 <!-- /.row -->
                 
-                 <?php 
-                            
-                $query = "SELECT * FROM posts";
-                $select_all_posts = mysqli_query($connection, $query);
-                $post_count = mysqli_num_rows($select_all_posts);
-                                
-                $query = "SELECT * FROM comments";
-                $select_all_comments = mysqli_query($connection, $query);
-                $comments_count = mysqli_num_rows($select_all_comments);
-                                
-                $query = "SELECT * FROM users";
-                $select_all_users = mysqli_query($connection, $query);
-                $users_count = mysqli_num_rows($select_all_users);
-                                
-                $query = "SELECT * FROM categories";
-                $select_all_categories = mysqli_query($connection, $query);
-                $categories_count = mysqli_num_rows($select_all_categories);                
+                 <?php
+                $posts_draft_count = record_count("posts", "post_status = 'draft'");
+                $posts_published_count = record_count("posts", "post_status = 'published'");
+                $unapproved_comments_count = record_count("comments", "comment_status = 'unapproved'");
+                $subscribers_count = record_count("users", "user_role = 'subscriber'");
 
-                $query = "SELECT * FROM posts WHERE post_status = 'draft'";
-                $select_all_draft_posts = mysqli_query($connection, $query);
-                $posts_draft_count = mysqli_num_rows($select_all_draft_posts);
-                
-                $query = "SELECT * FROM posts WHERE post_status = 'published'";
-                $select_all_published_posts = mysqli_query($connection, $query);
-                $posts_published_count = mysqli_num_rows($select_all_published_posts);
-                                
-                $query = "SELECT * FROM comments WHERE comment_status = 'unapproved'";
-                $unapproved_comments = mysqli_query($connection, $query);
-                $unapproved_comments_count = mysqli_num_rows($unapproved_comments);
-                                
-                $query = "SELECT * FROM users WHERE user_role = 'subscriber'";
-                $select_all_subscribers = mysqli_query($connection, $query);
-                $subscribers_count = mysqli_num_rows($select_all_subscribers);
-                
-                
+
                 $query = "SELECT * FROM posts WHERE post_status = 'published' ORDER BY post_views_count DESC LIMIT 10 ";
                 $select_all_posts_most_views = mysqli_query($connection, $query);
                 $posts_most_views_count = mysqli_num_rows($select_all_posts_most_views);
-               
-                            
-                 ?>        
+
+
+                 ?>
                                     
                        
                 <!-- /.row -->
@@ -72,7 +44,7 @@
                                     </div>
                                     <div class="col-xs-9 text-right">
                                     
-                                  <div class='huge'><?php echo $post_count; ?></div>
+                                  <div class='huge'><?php echo $post_count =record_count("posts"); ?></div>
                                         <div>Posts</div>
                                     </div>
                                 </div>
@@ -94,7 +66,7 @@
                                         <i class="fa fa-comments fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                     <div class='huge'><?php echo $comments_count; ?></div>
+                                     <div class='huge'><?php echo $comments_count= record_count("comments"); ?></div>
                                       <div>Comments</div>
                                     </div>
                                 </div>
@@ -116,7 +88,7 @@
                                         <i class="fa fa-user fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                    <div class='huge'><?php echo $users_count; ?></div>
+                                    <div class='huge'><?php echo $users_count = record_count("users"); ?></div>
                                         <div> Users</div>
                                     </div>
                                 </div>
@@ -138,7 +110,7 @@
                                         <i class="fa fa-list fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class='huge'><?php echo $categories_count; ?></div>
+                                        <div class='huge'><?php echo $categories_count = record_count("categories"); ?></div>
                                          <div>Categories</div>
                                     </div>
                                 </div>
@@ -166,7 +138,7 @@
                         var data = google.visualization.arrayToDataTable([
                           ['Data', 'Count'],
                             
-                        <?php 
+                        <?php
                         
                             $elements_text = ['All Posts','Active Posts', 'Draft Posts', 'Comments', 'Pending Comments', 
                                               'Users', 'Subscribers', 'Categories'];

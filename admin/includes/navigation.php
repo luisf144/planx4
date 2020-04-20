@@ -14,15 +14,15 @@
             <div class="navbar-collapse navbar-ex1-collapse collapse">
                 
                  <ul class="nav navbar-nav side-nav">
-                    <li >
+                    <li class="<?php echo page_is_active("index.php"); ?>">
                         <a href="index.php"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
-                    <li>
+                    <li class="<?php echo page_is_active("posts.php"); ?>">
                         <a href="javascript:;" data-toggle="collapse" data-target="#post_dropdown">
                             <i class="fa fa-fw fa-arrows-v"></i> Posts <i class="fa fa-fw fa-caret-down"></i>
                         </a>
                         <ul id="post_dropdown" class="collapse">
-                            <li>
+                            <li >
                                 <a href="./posts.php">View All Posts</a>
                             </li>
                             <li>
@@ -30,14 +30,14 @@
                             </li>
                         </ul>
                     </li>
-                    <li>
+                    <li class="<?php echo page_is_active("categories.php"); ?>">
                         <a href="./categories.php"><i class="fa fa-fw fa-wrench"></i> Categories</a>
                     </li>
                     
-                    <li>
+                    <li class="<?php echo page_is_active("comments.php"); ?>">
                         <a href="comments.php"><i class="fa fa-fw fa-file"></i> Comments</a>
                     </li>
-                    <li>
+                    <li class="<?php echo page_is_active("users.php"); ?>">
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo">
                             <i class="fa fa-fw fa-arrows-v"></i> Users <i class="fa fa-fw fa-caret-down"></i>
                         </a>
@@ -50,7 +50,7 @@
                             </li>
                         </ul>
                     </li>
-                    <li>
+                    <li class="<?php echo page_is_active("profile.php"); ?>">
                         <a href="profile.php"><i class="fa fa-fw fa-dashboard"></i> Profile</a>
                     </li>
                 </ul>

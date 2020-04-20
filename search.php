@@ -58,13 +58,13 @@
                         $page_1 = ($page * 5) - 5;
 
 
-                    $query = "SELECT * FROM posts WHERE post_tags LIKE '%$search%' ";
+                    $query = "SELECT * FROM posts WHERE post_tags LIKE '%$search%' AND post_status = 'published' ";
                     $select_all_post_query = mysqli_query($connection, $query);
                     $all_posts_count = mysqli_num_rows($select_all_post_query);
                     $all_posts_count = ceil($all_posts_count / 5);
 
                     
-                    $query = "SELECT * FROM posts WHERE post_tags LIKE '%$search%' ORDER BY post_id DESC LIMIT $page_1, 5";
+                    $query = "SELECT * FROM posts WHERE post_tags LIKE '%$search%' AND post_status = 'published' ORDER BY post_id DESC LIMIT $page_1, 5";
                     $search_query = mysqli_query($connection, $query);
                     confirm_query($search_query);
                     
