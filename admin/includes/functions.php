@@ -92,5 +92,3 @@ function update_categories(){
         confirm_query($update_query);
     } 
 }
-
-?>

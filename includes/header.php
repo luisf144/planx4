@@ -1,6 +1,7 @@
 <?php session_start(); ?>
-<?php include "includes/functions.php";  ?>
-<?php include "includes/db.php";  ?>
+<?php include "functions.php";  ?>
+<?php include "db.php";  ?>
+<?php include "helpers.php"; ?>
 <?php
 ob_start();
 date_default_timezone_set('Europe/London');

@@ -8,8 +8,9 @@ date_default_timezone_set('Europe/London');
 
 <?php
 
-include "../includes/db.php"; 
-include "functions.php"; 
+include "../includes/db.php";
+include "functions.php";
+include "../includes/helpers.php";
 
 
 if(!isset($_SESSION['user_role']) || (isset($_SESSION['user_role']) && $_SESSION['user_role'] != 'admin') ){

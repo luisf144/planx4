@@ -72,6 +72,12 @@ if(isset($_POST['login'])){
             </span>
         </div>
 
+        <div class="form-group forgot-link">
+            <a href="forgot.php?forgot=<?php echo uniqid(true); ?>">
+                Forgot Password?
+            </a>
+        </div>
+
 
     </form>
 

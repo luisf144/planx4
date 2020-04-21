@@ -60,18 +60,6 @@ function users_online(){
 users_online();
 /** END **/
 
-function checkUsernameExistDB($username){
-    global $connection;
-    pdo_connect_mysql();
-    $pdo = pdo_connect_mysql();
-
-    $stmt = $pdo->prepare("SELECT COUNT(*) FROM users WHERE username = :username");
-    $stmt->bindValue(":username", $username, PDO::PARAM_STR);
-    $stmt->execute();
-
-    return $stmt->fetchColumn();
-}
-
 function get_time_ago($time){
     $time_difference = time() - $time;
 
