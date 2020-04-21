@@ -39,9 +39,10 @@ if(ifIsMethod("post") && isset($_POST['recover_submit'])){
 
                 try {
                     echo "first";
-                    $host  = $_SERVER['HTTP_HOST']; echo " ".$host. " ";
-                    $uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\'); echo $uri." ";
-                    $link = "https://$host$uri/reset.php?email=$email&token=$token";
+//                    $host  = $_SERVER['HTTP_HOST']; echo " ".$host. " ";
+//                    $uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\'); echo $uri." ";
+//                    $link = "https://$host$uri/reset.php?email=$email&token=$token";
+                    $link = "https://planx4.herokuapp.com/reset.php?email=".$email."&token=".$token;
                     echo "Link: ". $link;
 
                     //Server settings
