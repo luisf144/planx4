@@ -40,7 +40,7 @@ if(ifIsMethod("post") && isset($_POST['recover_submit'])){
                 try {
 
                     $host  = $_SERVER['HTTP_HOST']; echo " ".$host. " ";
-                    $uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\'); echo $uri." ";
+                    $uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
                     $link = "https://$host$uri/reset.php?email=$email&token=$token";
 
                     //Server settings
