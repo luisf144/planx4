@@ -38,9 +38,11 @@ if(ifIsMethod("post") && isset($_POST['recover_submit'])){
                 $mail = new PHPMailer(true);
 
                 try {
-                    $host  = $_SERVER['HTTP_HOST'];
-                    $uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
-                    $link = "http://$host$uri/reset.php?email=$email&token=$token";
+                    echo "first";
+                    $host  = $_SERVER['HTTP_HOST']; echo " ".$host. " ";
+                    $uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\'); echo $uri." ";
+                    $link = "https://$host$uri/reset.php?email=$email&token=$token";
+                    echo "Link: ". $link;
 
                     //Server settings
                     $mail->SMTPDebug = SMTP::DEBUG_SERVER;
