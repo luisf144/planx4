@@ -8,6 +8,7 @@ require "./vendor/autoload.php";
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\SMTP;
 
 pdo_connect_mysql();
 $pdo = pdo_connect_mysql();
@@ -42,6 +43,7 @@ if(ifIsMethod("post") && isset($_POST['recover_submit'])){
                     $link = "http://$host$uri/reset.php?email=$email&token=$token";
 
                     //Server settings
+                    $mail->SMTPDebug = SMTP::DEBUG_SERVER;
                     $mail->isSMTP();                                            // Send using SMTP
                     $mail->Host       = Config::SMTP_HOST;                    // Set the SMTP server to send through
                     $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
