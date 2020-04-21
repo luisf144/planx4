@@ -1,12 +1,20 @@
 {
-    "require" : {
-        "silex/silex": "^2.0.4",
-        "monolog/monolog": "^1.22",
-        "twig/twig": "^2.0",
-        "symfony/twig-bridge": "^3",
-        "phpmailer/phpmailer": "^6.1"
-    },
+    "name": "luiscarbajal/planqua-app",
     "require-dev": {
         "heroku/heroku-buildpack-php": "*"
+    },
+    "authors": [
+        {
+            "name": "luis carbajal",
+            "email": "luis.carbajal@webeetle.it"
+        }
+    ],
+    "autoload":{
+        "classmap": [
+            "classes"
+        ]
+    },
+    "require" : {
+        "phpmailer/phpmailer": "^6.1"
     }
 }
