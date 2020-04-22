@@ -1,8 +1,25 @@
-  <!-- registration -->
+  <?php
+   require './vendor/autoload.php';
+  ?>
+
    <?php
     pdo_connect_mysql();
     $pdo = pdo_connect_mysql();
     $error = "";
+   $dotenv = Dotenv\Dotenv::createImmutable("./");
+   $dotenv->load();
+
+   $options = array(
+       'cluster' => 'eu',
+       'useTLS' => true
+   );
+   $pusher = new Pusher\Pusher(
+       getenv('PUSHER_APP_KEY'),
+       getenv('PUSHER_APP_SECRET'),
+       getenv('PUSHER_APP_ID'),
+       $options
+   );
+
 
     if(isset($_POST['sign_up'])){
         if(isset($_POST['username']) && isset($_POST['password']) 
@@ -39,6 +56,9 @@
                         $_SESSION['user_firstname'] = $user_firstname;
                         $_SESSION['user_lastname'] = $user_lastname;
                         $_SESSION['user_role'] = $user_role;
+
+                        //PUSHER
+                        $pusher->trigger('notifications', 'new_user', $username);
 
                         header("Location: index.php");
                     }else{

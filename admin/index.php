@@ -227,5 +227,24 @@
     
     
     <?php include "includes/footer.php"; ?>
+    <script src="https://js.pusher.com/5.1/pusher.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script>
+
+        $(document).ready(function () {
+            const pusher = new Pusher('c81df1d65be31b348303', {
+                cluster: 'eu',
+                forceTLS: true
+            });
+
+            var notifications = pusher.subscribe('notifications');
+            notifications.bind('new_user', function(data) {
+
+                toastr.success(data + " just registered");
+
+            });
+        });
+
+    </script>
 
    

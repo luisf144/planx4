@@ -122,9 +122,8 @@ if(isset($_POST['remove_comment'])){
                     </p>
                 </blockquote>
 
-                <hr>    
-                   
-                   
+                    <?php include "includes/likes.php"; ?>
+                <hr>
                     
             <?php
                 
@@ -281,6 +280,7 @@ if(isset($_POST['remove_comment'])){
                                          <span class="glyphicon glyphicon-time"></span>  
                                          <?php echo get_time_ago(strtotime($comment_date));  ?>  
                                </small>
+
                             </div>
                         </div>
                         

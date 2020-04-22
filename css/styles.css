@@ -189,3 +189,15 @@ a:hover{
 .forgot-link > a, .forgot-link > a:hover{
     text-decoration: underline;
 }
+
+.like-section{
+    padding-left: 30px;
+}
+
+.like-section span>i{
+    color: red;
+}
+
+.unlike, .like{
+    font-size: 16px;
+}

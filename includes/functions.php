@@ -7,16 +7,46 @@ function confirm_query($result){
     }
 }
 
+function query($query){
+    global $connection;
+    $exec_query = mysqli_query($connection, $query);
+    confirm_query($exec_query);
+
+    return $exec_query;
+}
+
 function escape($string){
     global $connection;
     return mysqli_real_escape_string($connection, trim($string));
 }
 
-function send_mail(){
-    mail('luisfcb14@gmail.com', "THIS IS A TEST", "<h1> Ciao</h1>", "edwin@gmail.com");
+
+function loggedInUserId(){
+
+    if(isLoggedIn()){
+        $username = $_SESSION['username'];
+        $sql = "SELECT * FROM users WHERE username = '$username' ";
+        $result = query($sql);
+        confirm_query($result);
+        $user = mysqli_fetch_array($result);
+
+        return mysqli_num_rows($result) >= 1 ? $user['user_id'] : false;
+    }
+
+    return false;
 }
 
-//send_mail();
+function userLikedThePost($post_id = '', $user_id = ''){
+    $result = query("SELECT * FROM likes WHERE user_id = ". (empty($user_id) ? loggedInUserId() : $user_id)." AND post_id = $post_id");
+    confirm_query($result);
+    return mysqli_num_rows($result) >= 1 ? true : false;
+}
+
+function getPostLikes($post_id = ''){
+    $result = query("SELECT * FROM likes WHERE post_id = $post_id");
+    confirm_query($result);
+    return mysqli_num_rows($result);
+}
 
 function users_online(){
     global $connection;
@@ -96,6 +126,5 @@ function get_greetings(){
     }else{
         return "Welcome";
     }
-
 
 }
