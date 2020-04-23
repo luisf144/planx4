@@ -9,6 +9,7 @@ const _SIGN_UP = "Regístrate";
 
 
 const _LOGIN = "Iniciar Sesión";
+const _REGISTER = "Regístrate";
 const _LOGIN_BTN = "Entrar";
 const _FORGOT_PASSWORD = "¿Se te olvidó tu contraseña?";
 

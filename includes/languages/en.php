@@ -9,6 +9,7 @@ const _SIGN_UP = "Sign Up";
 
 
 const _LOGIN = "Login";
+const _REGISTER = "Register";
 const _LOGIN_BTN = "Login";
 const _FORGOT_PASSWORD = "Forgot Password?";
 

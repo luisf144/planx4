@@ -91,13 +91,20 @@ if(isset($_GET['logout'])){
                     <!--     End                -->
 
 
+                    <?php
 
-                    <li id="liLogin" style="display: none">
-                        <a href="#login" id="loginLink"><b><i class="fa fa-user" aria-hidden="true"></i>&nbsp; Login</b></a>
-                    </li>
-                    <li id="liRegister" style="display: none">
-                        <a href="#registration"><b><i class="fa fa-sign-in" aria-hidden="true"></i>&nbsp; Register</b></a>
-                    </li>
+                    if(!isset($_SESSION['username'])){
+                        ?>
+
+                        <li id="liLogin" style="display: none">
+                            <a href="#login" id="loginLink"><b><i class="fa fa-user" aria-hidden="true"></i>&nbsp; <?php echo _LOGIN; ?></b></a>
+                        </li>
+                        <li id="liRegister" style="display: none">
+                            <a href="#registration"><b><i class="fa fa-sign-in" aria-hidden="true"></i>&nbsp; <?php echo _REGISTER; ?></b></a>
+                        </li>
+
+                    <?php }   ?>
+
 
                 </ul>
 
