@@ -17,15 +17,12 @@ $(document).ready(function(){
 
 
 function postLikes(instanceThis, userLikedIt){
-    var pathArray = window.location.pathname.split('/');
-    var pathName = pathArray[1];
-
     var postId = $(instanceThis).attr("data-id");
     var currentLiked = $(instanceThis).attr("data-likes");
     var userId = $(instanceThis).attr("data-user-id");
 
     $.ajax({
-        url: "/" + pathName + "/includes/likes.php",
+        url: "includes/likes.php",
         type: "post",
         data: {
             liked: userLikedIt,
