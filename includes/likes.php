@@ -13,9 +13,10 @@ if (session_status() == PHP_SESSION_NONE) {
 }
 
 global $post_id;
+$post_id = isset($_GET['post_id']) ? $_GET['post_id']: $_POST['post_id'];
+
 if(isset($_POST['post_id']) && isset($_POST['user_id']) && isset($_POST['liked'])){
 
-    $post_id  = $_POST['post_id'];
     $post_likes = $_POST['currentLiked'];
     $user_id = $_POST['user_id'];
     $liked = $_POST['liked'];
@@ -38,14 +39,11 @@ if(isset($_POST['post_id']) && isset($_POST['user_id']) && isset($_POST['liked']
     confirm_query($exe_query);
 }
 
-$post_id = isset($_GET['post_id']) ? $_GET['post_id']: $_POST['post_id'];
-
 if(isset($_GET['refresh_likes'])){
-//    session_start();
     $post_likes = getPostLikes($_GET['post_id']);
 }else{
     /* GETTING POST LIKES */
-    $post_likes = getPostLikes(isset($_GET['post_id']) ? $_GET['post_id']: $_POST['post_id']);
+    $post_likes = getPostLikes($post_id);
     /* END */
 }
 

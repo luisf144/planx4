@@ -52,6 +52,7 @@
                     $lastInsertId = $pdo->lastInsertId();
                     unset($pdo);
                     if($lastInsertId){
+                        $_SESSION['user_id'] = $lastInsertId;
                         $_SESSION['username'] = $username;
                         $_SESSION['user_firstname'] = $user_firstname;
                         $_SESSION['user_lastname'] = $user_lastname;
