@@ -13,8 +13,7 @@ if (session_status() == PHP_SESSION_NONE) {
 }
 
 global $post_id;
-if(isset($_POST['currentLiked']) && isset($_POST['post_id'])
-    && isset($_POST['user_id']) && isset($_POST['liked'])){
+if(isset($_POST['post_id']) && isset($_POST['user_id']) && isset($_POST['liked'])){echo "entre;";
 
     $post_id  = $_POST['post_id'];
     $post_likes = $_POST['currentLiked'];
