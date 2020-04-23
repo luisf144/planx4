@@ -64,6 +64,7 @@ if(isset($_GET['refresh_likes'])){
                     <a href="#" class="<?php echo (userLikedThePost($post_id, $_SESSION['user_id']) ? 'unlike':'like'); ?>"
                        data-id="<?php echo $post_id; ?>" data-likes="<?php echo $post_likes; ?>"
                        data-user-id="<?php echo $_SESSION['user_id']; ?>">
+
                         <span class="glyphicon glyphicon-thumbs-<?php echo (userLikedThePost($post_id, $_SESSION['user_id']) ? 'down':'up'); ?>"></span>
                         <?php echo (userLikedThePost($post_id, $_SESSION['user_id']) ? 'Unlike':'Like'); ?>
                     </a>
@@ -76,10 +77,10 @@ if(isset($_GET['refresh_likes'])){
 
             ?>
             <div class="row">
-                <p class="pull-left">
+                <h4 class="pull-left">
                     You need to
                     <a href="../index.php" >Login</a> to like.
-                </p>
+                </h4>
             </div>
 
 
@@ -90,15 +91,21 @@ if(isset($_GET['refresh_likes'])){
 
 
 
-        <div class="row">
-            <p class="pull-left">
-                <strong>Likes</strong>:
+        <?php
+        if($post_likes){
+        ?>
+            <div class="row">
+                <h4 class="pull-left">
                 <span id="count-likes">
                 <?php echo $post_likes; ?>
-                    <i class="fa fa-heart" aria-hidden="true"></i>
+                    <span class="glyphicon glyphicon-thumbs-up"></span>
             </span>
-            </p>
-        </div>
+                </h4>
+            </div>
+        <?php
+        }
+
+        ?>
 
     </div>
 

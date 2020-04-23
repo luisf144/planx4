@@ -2,7 +2,7 @@
         <footer>
             <div class="row">
                 <div class="col-lg-12">
-                    <p class="text-center"><b>Planx4</b> &copy; 2020 by <b>Luis Carbajal</b></p>
+                    <p class="text-center"><b>Planx4</b> &copy; 2020  <?php echo _BY; ?> <b>Luis Carbajal</b></p>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>

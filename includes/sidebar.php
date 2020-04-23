@@ -16,7 +16,7 @@
                 
                 <!-- Blog Search Well -->
                 <div class="well">
-                    <h4>Search</h4>
+                    <h4> <?php echo _SEARCH; ?></h4>
                     
                     <!-- search form                     -->                
                    <form action="search.php" method="post"> 
@@ -44,7 +44,7 @@
                 
                     ?>   
                 
-                    <h4>Categories</h4>
+                    <h4> <?php echo _CATEGORIES; ?></h4>
                     <div class="row">
                         <div class="col-lg-12">
                             <ul class="list-unstyled">

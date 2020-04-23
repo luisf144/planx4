@@ -20,7 +20,7 @@
                    
                     <a class="btn btn-app" href="add_post.php">
                         <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                        <b>New Post</b>
+                        <b><?php echo _NEW_POST; ?></b>
                     </a>
 
                     <br>
@@ -103,7 +103,8 @@
                             </a>
                         </h2>
                         <p class="lead">
-                            by <a href="author_post.php?author=<?php echo $post_created_by; ?>">
+                            <?php echo _BY; ?>
+                            <a href="author_post.php?author=<?php echo $post_created_by; ?>">
                                  <?php echo $post_author  ?> 
                                </a>
                         </p>
@@ -121,7 +122,7 @@
                         <p class="comment-post"> 
                          <a href="post.php?post_id=<?php echo $post_id; ?>#comments-thread">
                             <i class="fa fa-comments" aria-hidden="true"></i>
-                             <?php echo $count_comments;  ?> Comments
+                             <?php echo $count_comments;  ?>  <?php echo _COMMENTS; ?>
                          </a>
                         </p>
                         <hr style="margin-top:12px">
@@ -146,7 +147,7 @@
                         </blockquote>
 
                         <a class="btn btn-info" href="post.php?post_id=<?php echo $post_id; ?> ">
-                        Read more <span class="glyphicon glyphicon-chevron-right"></span>
+                            <?php echo _READ_MORE; ?> <span class="glyphicon glyphicon-chevron-right"></span>
                         </a>
 
                         <hr><br><br>  

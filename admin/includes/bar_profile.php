@@ -1,7 +1,12 @@
 <?php 
 
 if(isset($_GET['logout'])){
-    session_destroy();
+    unset( $_SESSION['user_id']);
+    unset( $_SESSION['username']);
+    unset( $_SESSION['user_firstname']);
+    unset( $_SESSION['user_lastname']);
+    unset( $_SESSION['user_role']);
+    
     header("Location: index.php");
 }
 

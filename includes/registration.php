@@ -78,33 +78,33 @@
     ?>
                 
                     <div class="well" id="registration">
-                        <h4>Create Account</h4>
+                        <h4><?php echo _CREATE_ACCOUNT; ?></h4>
                         <!-- search form                     -->                
                        <form action="" method="post"> 
                        
                        <div class="form-group">
                             <div class="row">
                                 <div class="col-xs-6">
-                                    <input type="text" class="form-control" name="user_firstname" placeholder="First Name"
+                                    <input type="text" class="form-control" name="user_firstname" placeholder="<?php echo _FIRST_NAME; ?>"
                                            required="required" autocomplete="on" value="<?php echo isset($user_firstname) ? $user_firstname :'' ?>">
                                 </div>
                                 <div class="col-xs-6">
-                                    <input type="text" class="form-control" name="user_lastname" placeholder="Last Name"
+                                    <input type="text" class="form-control" name="user_lastname" placeholder="<?php echo _LAST_NAME; ?>"
                                            required="required" autocomplete="on" value="<?php echo isset($user_lastname) ? $user_lastname :'' ?>">
                                 </div>
                             </div>        	
                         </div>
                 
                        <div class="form-group">
-                            <input name="username" placeholder="Username" type="text" class="form-control"
+                            <input name="username" placeholder="<?php echo _USERNAME; ?>" type="text" class="form-control"
                                    required="required" autocomplete="on" value="<?php echo isset($username) ? $username :'' ?>">
                         </div>
 
                         <div class="input-group">
-                            <input name="password" placeholder="Password" type="password" class="form-control" required="required">  
+                            <input name="password" placeholder="<?php echo _PASSWORD; ?>" type="password" class="form-control" required="required">
                             <span class="input-group-btn">
                                 <button class="btn btn-primary" name="sign_up" type="submit">
-                                    Sign Up
+                                     <?php echo _SIGN_UP; ?>
                                 </button>
                             </span>
                         </div>

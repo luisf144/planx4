@@ -1,12 +1,10 @@
 $(document).ready(function(){
     bindLikeFuncionality();
 
-    function loadUsersOnline(){
-        $.get("includes/functions.php?onlineusers=result", function(data){
-            $(".users-online").text(data);
-        })
-    };
-    
+    changeLanguage();
+
+    navResponsive();
+
     loadUsersOnline();
     
     setInterval(function(){
@@ -15,6 +13,25 @@ $(document).ready(function(){
 
 });
 
+function changeLanguage(){
+    $("#language_select").change(function () {
+        $('#language_form').submit();
+    });
+}
+
+function navResponsive(){
+    var innerWidth = window.innerWidth;
+    if(innerWidth < 1000){
+        document.getElementById("liLogin").style.display = "block";
+        document.getElementById("liRegister").style.display = "block";
+    }
+}
+
+function loadUsersOnline(){
+    $.get("includes/functions.php?onlineusers=result", function(data){
+        $(".users-online").text(data);
+    })
+};
 
 function postLikes(instanceThis, userLikedIt){
     var postId = $(instanceThis).attr("data-id");

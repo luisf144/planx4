@@ -55,26 +55,26 @@ if(isset($_POST['login'])){
 
 <br>
 <div class="well" id="login">
-    <h4>Log In</h4>
+    <h4> <?php echo _LOGIN; ?></h4>
 
     <form action="" method="post">
         <div class="form-group">
-            <input name="username" placeholder="Enter Username" type="text"
+            <input name="username" placeholder="<?php echo _USERNAME; ?>" type="text"
                    class="form-control" autocomplete="on" value="<?php echo isset($username) ? $username:"" ?>">
         </div>
 
         <div class="input-group">
-            <input name="password" placeholder="Enter Password" type="password" class="form-control" >
+            <input name="password" placeholder="<?php echo _PASSWORD; ?>" type="password" class="form-control" >
             <span class="input-group-btn">
                 <button class="btn btn-primary" name="login" type="submit">
-                    Log In
+                     <?php echo _LOGIN_BTN; ?>
                 </button>
             </span>
         </div>
 
         <div class="form-group forgot-link">
             <a href="forgot.php?forgot=<?php echo uniqid(true); ?>">
-                Forgot Password?
+                <?php echo _FORGOT_PASSWORD; ?>
             </a>
         </div>
 

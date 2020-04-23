@@ -93,13 +93,13 @@ users_online();
 function get_time_ago($time){
     $time_difference = time() - $time;
 
-    if( $time_difference < 1 ) { return 'less than 1 second ago'; }
-    $condition = array( 12 * 30 * 24 * 60 * 60 =>  'year',
-                30 * 24 * 60 * 60       =>  'month',
-                24 * 60 * 60            =>  'day',
-                60 * 60                 =>  'hour',
-                60                      =>  'minute',
-                1                       =>  'second'
+    if( $time_difference < 1 ) { return   _LESS_TIME; }
+    $condition = array( 12 * 30 * 24 * 60 * 60 =>  _YEAR,
+                30 * 24 * 60 * 60       =>  _MONTH,
+                24 * 60 * 60            =>  _DAY,
+                60 * 60                 =>  _HOUR,
+                60                      =>  _MINUTE,
+                1                       =>  _SECOND
     );
 
     foreach( $condition as $secs => $str )
@@ -109,7 +109,7 @@ function get_time_ago($time){
         if( $d >= 1 )
         {
             $t = round( $d );
-            return $t . ' ' . $str . ( $t > 1 ? 's' : '' ) . ' ago';
+            return $t . ' ' . $str . ( $t > 1 ? 's' : '' ) . ' '._AGO;
         }
     }
 }
@@ -118,11 +118,11 @@ function get_greetings(){
     $now = date('H');
 
     if($now < 12){
-        return "Good Morning";
+        return _MORNING;
     }elseif($now > 11 && $now < 17){
-        return "Good Afternoon";
+        return _AFTERNOON;
     }elseif($now >= 17){
-        return "Good Evening";
+        return _NIGHT;
     }else{
         return "Welcome";
     }

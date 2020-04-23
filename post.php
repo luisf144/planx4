@@ -54,6 +54,7 @@ if(isset($_POST['remove_comment'])){
                     $post_date = $row['post_date'];
                     $post_image = $row['post_image'];
                     $post_content = $row['post_content'];
+                    $post_views_count = $row['post_views_count'];
                     $post_created_by = $row['post_created_by'];
                     
                     
@@ -88,11 +89,11 @@ if(isset($_POST['remove_comment'])){
                     
                 </h1>
                 
-                <p class="lead">
+                <h2 class="lead">
                     by <a >
                          <?php echo $post_author  ?> 
                        </a>
-                </p>
+                </h2>
                 
                 <p class="date-post">
                      <span class="glyphicon glyphicon-time"></span>
@@ -109,6 +110,11 @@ if(isset($_POST['remove_comment'])){
                      <i class="fa fa-comments" aria-hidden="true"></i>
                       <?php echo $count_comments;  ?> Comments   
                     </a>
+                </p>
+
+                <p class="views-post">
+                        <i class="fa fa-eye" aria-hidden="true"></i>
+                        <?php echo $post_views_count;  ?> views
                 </p>
                 
                 <hr style="margin-top:12px">
