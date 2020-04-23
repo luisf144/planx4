@@ -134,7 +134,7 @@ if(isset($_POST['remove_comment'])){
                 }
              
             }else{
-                 header("Location: index.php");
+                 //header("Location: index.php");
                  }
             
             ?>
